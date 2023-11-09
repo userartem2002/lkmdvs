@@ -41,4 +41,21 @@ void MainWindow::show_pin_check_window() {
     pin_window->show();
 }
 
+int MainWindow::check_pin_code() {
+    const QString orig_code = "1234";
+    QString code = input_pincode->text();
+
+    if (orig_code == code) {
+        delete[] pin_window;
+        this->show_game_window(); //запускаем основное окно
+        this->show();
+        return 0;
+
+    }
+    else {
+        QMessageBox::critical(NULL,QObject::tr("Ошибка"),tr("Ошибка ввода пин-кода"));
+        return 0;
+    }
+}
+
 
